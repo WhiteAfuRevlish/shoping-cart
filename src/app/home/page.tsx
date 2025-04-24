@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 import ItemList from '@/components/features/ItemList';
-import { useItems } from '@/hooks/useItems';
+import useItems from '@/hooks/useItems';
 import { Input } from '@/components/ui/input';
 import { AiFillPlusCircle } from 'react-icons/ai';
 import { Button } from "@/components/ui/button"
@@ -15,7 +15,7 @@ import {
   DialogTrigger
 } from "@/components/ui/dialog";
 import { Card, CardContent } from "@/components/ui/card";
-import { useModal } from '@/hooks/useModal';
+import useModal from '@/hooks/useModal';
 
 const HomePage: React.FC = () => {
   const { selectedList } = useLists();
@@ -39,7 +39,7 @@ const HomePage: React.FC = () => {
         />
       </div>
       <div className='grow relative w-full'>
-        <ItemList items={items} loading={loading} />
+        <ItemList items={items} loading={loading} onItemChange={() => {}} />
         <Dialog open={isOpen} onOpenChange={onClose}>
           <DialogTrigger asChild>
             <div className='fixed bottom-6 right-6'>
@@ -51,7 +51,7 @@ const HomePage: React.FC = () => {
             </div >
           </DialogTrigger>
           <DialogContent className="sm:max-w-[425px]">
-            <AddItemModal onClose={onClose} />
+            <AddItemModal listId={selectedList?.id ?? ''} onCancel={onClose} />
             <DialogClose asChild>
             </DialogClose>
           </DialogContent>

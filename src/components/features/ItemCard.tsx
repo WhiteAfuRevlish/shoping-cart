@@ -1,5 +1,7 @@
+'use client';
+
 import { Card } from '@/components/ui/card';
-import { useModal } from '@/hooks/useModal';
+import useModal from '@/hooks/useModal';
 import { Checkbox } from '@/components/ui/checkbox';
 
 interface ItemCardProps {
@@ -67,3 +69,4 @@ const ItemCard: React.FC<ItemCardProps> = ({
 };
 
 export default ItemCard;
+
