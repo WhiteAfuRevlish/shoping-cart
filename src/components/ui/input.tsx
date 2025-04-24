@@ -3,8 +3,13 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { FormControl, FormItem, FormLabel } from "./form";
 
+interface InputProps extends React.ComponentProps<"input"> {
+  label?: string;
+}
+
 const Input = React.forwardRef<
-  HTMLInputElement, React.ComponentProps<"input"> & { label?: string }>
+  HTMLInputElement,
+  InputProps
 >(({ className, type = "text", placeholder, label, ...props }, ref) => {
   return (
     <FormItem>
@@ -28,3 +33,4 @@ const Input = React.forwardRef<
 Input.displayName = "Input";
 
 export { Input };
+

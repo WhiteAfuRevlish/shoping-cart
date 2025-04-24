@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { ListCard } from './ListCard';
+import ListCard from './ListCard';
 import { List, useLists } from '@/hooks/useLists';
 import { AiFillPlusCircle } from 'react-icons/ai';
 import { Button } from '../ui/button';
