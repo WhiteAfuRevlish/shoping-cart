@@ -23,6 +23,10 @@ export const useAuth = (): AuthHook => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    if (!auth) {
+      setLoading(false);
+      return;
+    }
     return onAuthStateChanged(auth, (user) => {
       setUser(user);
       setLoading(false);
@@ -31,14 +35,17 @@ export const useAuth = (): AuthHook => {
 
 
   const signIn = async (email: string, password: string) => {
+    if (!auth) return;
     await signInWithEmailAndPassword(auth, email, password);
   };
 
   const signUp = async (email: string, password: string) => {
+    if (!auth) return;
     await createUserWithEmailAndPassword(auth, email, password);
   };
 
   const signOutUser = async () => {
+    if (!auth) return;
     await signOut(auth);
   };
 
@@ -50,3 +57,4 @@ export const useAuth = (): AuthHook => {
     signOut: signOutUser,
   };
 };
+
