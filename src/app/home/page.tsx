@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect } from 'react';
 import ItemList from '@/components/features/ItemList';
 import { useItems } from '@/hooks/useItems';

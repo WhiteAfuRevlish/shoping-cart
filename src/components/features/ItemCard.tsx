@@ -65,10 +65,12 @@ const ItemCard: React.FC<ItemCardProps> = ({
           </div>
           {note && <div className="text-sm text-gray-600">
             <span className="font-medium">Note:</span> {note}
-          </div>}
+          </div>} */}
         </div>
       </div>
       </Card>
       </>
   );
 };
+
+export default ItemCard;
