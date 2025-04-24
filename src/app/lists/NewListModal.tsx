@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useEffect, FormEvent } from 'react';
 import { List } from '@/types/list';
 import { useLists } from '@/hooks/useLists';
@@ -47,7 +49,7 @@ export const AddEditListModal: React.FC<AddEditListModalProps> = ({
         emoji,
         creationDate: list.creationDate,
       };
-      await updateList(updatedList);
+      await updateList(listId, updatedList);
     } else {
       const newList: Omit<List, 'id'> = {
         name,

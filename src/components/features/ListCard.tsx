@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from "react";
 import { AiFillDelete } from "react-icons/ai";
 
