@@ -1,7 +1,10 @@
-import type {Metadata} from 'next';
-import {Geist, Geist_Mono} from 'next/font/google';
-import './globals.css';
+import type { Metadata } from 'next';
+import { Geist, Geist_Mono } from 'next/font/google';
+import { BiSolidBarcode, BiSolidHomeAlt2 } from 'react-icons/bi';
+import { MdFormatListBulleted } from 'react-icons/md';
 
+import './globals.css';
+import {MdOutlineSettings} from 'react-icons/md';
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
@@ -25,8 +28,36 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {children}
+        <main className="flex flex-col min-h-screen">
+          <div className="flex-1">{children}</div>
+          <footer className='fixed bottom-0 w-full bg-white'>
+            <nav className='flex justify-around p-4'>
+              <a
+                href='/home'
+                className='flex flex-col items-center space-y-1'
+              >
+                <BiSolidHomeAlt2 size={24} />
+                {/* <span className='text-xs'>Home</span> */}
+              </a>
+              <a
+                href='/lists'
+                className='flex flex-col items-center space-y-1'
+              >
+                <MdFormatListBulleted size={24} />
+                {/* <span className='text-xs'>Lists</span> */}
+              </a>
+              <a
+                href='/scanner'
+                className='flex flex-col items-center space-y-1'
+              >
+                <BiSolidBarcode size={24} />
+                {/* <span className='text-xs'>Scanner</span> */}
+              </a>
+            </nav>            
+          </footer>
+        </main>
       </body>
     </html>
   );
 }
+
