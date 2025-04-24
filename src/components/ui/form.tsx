@@ -44,12 +44,11 @@ const FormField = <
 const useFormField = () => {
   const fieldContext = React.useContext(FormFieldContext)
   const itemContext = React.useContext(FormItemContext)
-  const form = useFormContext();
+  const form = useFormContext()
 
   if (!form) {
-    throw new Error("useFormField should be used within a <Form>");
+    throw new Error("useFormField should be used within a <Form>")
   }
-
 
   if (!fieldContext) {
     throw new Error("useFormField should be used within <FormField>")
