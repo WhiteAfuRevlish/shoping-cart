@@ -1,4 +1,4 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp, getApps, FirebaseOptions } from "firebase/app";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -7,7 +7,7 @@ import {
 } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
-const firebaseConfig = {
+const firebaseConfig: FirebaseOptions = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
@@ -17,21 +17,37 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+let app;
+// Check if Firebase is already initialized or if the config is invalid
+if (!getApps().length && firebaseConfig.apiKey) {
+  try {
+    app = initializeApp(firebaseConfig);
+  } catch (error) {
+    console.error("Firebase initialization error:", error);
+  }
+}
+
+let auth, db;
+
+if (app) {
+  auth = getAuth(app);
+  db = getFirestore(app);
+}
 
 // Export Firebase services
 export { db, auth };
 
 export const createUser = async (email: string, password: string) => {
+  if (!auth) return null;
   return await createUserWithEmailAndPassword(auth, email, password);
 };
 
 export const signIn = async (email: string, password: string) => {
+    if (!auth) return null;
   return await signInWithEmailAndPassword(auth, email, password);
 };
 
 export const signOutUser = async () => {
+    if (!auth) return null;
   return await signOut(auth);
 };
