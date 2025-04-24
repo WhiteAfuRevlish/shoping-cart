@@ -36,40 +36,33 @@ const ItemCard: React.FC<ItemCardProps> = ({
     onOpen();
   };
 
-  return (<>
+  return (
     
-    <Card onClick={handleEditClick} className="relative p-4 border rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 ease-in-out flex flex-col">
-      <div className="flex justify-between items-center mb-2">
-        <div className="flex items-center gap-2">
-          <Checkbox checked={isBought} onCheckedChange={handleBoughtChange}/>
-          <span className="text-xl">{emoji}</span>
-        </div>
-      </div>
-      <h3 className={`font-semibold ${isBought ? 'line-through text-gray-500' : ''}`}>
-        {name}
-      </h3>
-      <div className="mt-1 flex flex-wrap gap-2 text-sm text-gray-600">
-        <div>
-          <span className="font-medium">Quantity:</span> {quantity}
-        </div>
-        <div>
-          <span className="font-medium">Category:</span> {category}
-        </div>
-        {note && (
-          <div>
-            <span className="font-medium">Note:</span> {note}
+      <Card onClick={handleEditClick} className="relative p-4 border rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 ease-in-out flex flex-col">
+        <div className="flex justify-between items-center mb-2">
+          <div className="flex items-center gap-2">
+            <Checkbox checked={isBought} onCheckedChange={handleBoughtChange}/>
+            <span className="text-xl">{emoji}</span>
           </div>
-        )}
-          {/* <div className="text-sm text-gray-600">
+        </div>
+        <h3 className={`font-semibold ${isBought ? 'line-through text-gray-500' : ''}`}>
+          {name}
+        </h3>
+        <div className="mt-1 flex flex-wrap gap-2 text-sm text-gray-600">
+          <div>
+            <span className="font-medium">Quantity:</span> {quantity}
+          </div>
+          <div>
             <span className="font-medium">Category:</span> {category}
           </div>
-          {note && <div className="text-sm text-gray-600">
-            <span className="font-medium">Note:</span> {note}
-          </div>} */}
+          {note && (
+            <div>
+              <span className="font-medium">Note:</span> {note}
+            </div>
+          )}
         </div>
-      </div>
       </Card>
-      </>
+    
   );
 };
 

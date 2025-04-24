@@ -89,10 +89,10 @@ const useItems = (listId: string | undefined) => {
       await updateDoc(doc(db, 'items', itemId), updatedItem);
       setItems(items.map((item) => {
         if (item.id === itemId) {
-            return { ...item, ...updatedItem };
+          return { ...item, ...updatedItem };
         }
         return item;
-      })));
+      }));
     } catch (err: any) {
       setError(err.message);
     }
