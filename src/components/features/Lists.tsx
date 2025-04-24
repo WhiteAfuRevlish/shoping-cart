@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
 import { ListCard } from './ListCard';
 import { List, useLists } from '@/hooks/useLists';
@@ -15,10 +17,10 @@ export const Lists: React.FC = () => {
       fetchLists();
   }, [fetchLists]);
 
-  const { open } = useAlert();
+  const { openAlert } = useAlert();
 
   const handleDeleteList = (list: List) => {
-    open({
+    openAlert({
       title: `Delete ${list.name}?`,
       message: 'Are you sure you want to delete this list?',
       onConfirm: async () => {
@@ -30,6 +32,7 @@ export const Lists: React.FC = () => {
             }
         } catch (error) {}
       },
+      onCancel: () => {}
     });
   };
 
@@ -45,7 +48,7 @@ export const Lists: React.FC = () => {
         ) : (
           <div className="grid grid-cols-1 gap-4 w-full ">
             {lists.map((list) => (
-              <ListCard key={list.id} list={list} onDelete={() => handleDeleteList(list)} />
+              <ListCard key={list.id} name={list.name} emoji={list.emoji} creationDate={list.creationDate} onDelete={() => handleDeleteList(list)} onClick={() => {}}/>
             ))}
           </div>
         )}

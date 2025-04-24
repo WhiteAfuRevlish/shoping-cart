@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 import {
   createUserWithEmailAndPassword,
@@ -57,4 +59,3 @@ export const useAuth = (): AuthHook => {
     signOut: signOutUser,
   };
 };
-
